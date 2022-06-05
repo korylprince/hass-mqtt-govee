@@ -33,6 +33,7 @@ type Configuration struct {
 	StateClass     string  `json:"stat_cla,omitempty"`
 	StateTopic     string  `json:"stat_t"`
 	ValueTemplate  string  `json:"val_tpl,omitempty"`
+	Unit           string  `json:"unit_of_meas,omitempty"`
 }
 
 type MQTT struct {
@@ -132,6 +133,7 @@ func (m *MQTT) ConfigureDevice(id string) error {
 			EntityCategory: "diagnostic",
 			StateClass:     "measurement",
 			StateTopic:     fmt.Sprintf(TopicBatteryLevelTmpl, m.Prefix, id, TopicEndpointSet),
+			Unit:           "V",
 		}))
 
 	// last seen
